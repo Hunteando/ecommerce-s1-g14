@@ -1,7 +1,7 @@
 import express from "express";
-import productos from "../routes/productos.js";
+import productos from "../../../routes/productos.js";
 import sequelize from "../config/mysql.js";
-import Productos from "./Productos.js";
+import Productos from "./Productos.js.js";
 
 class Server {
   constructor() {
