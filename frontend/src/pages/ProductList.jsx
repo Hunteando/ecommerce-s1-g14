@@ -3,12 +3,15 @@ import Navbar from "../components/navbar/Navbar";
 import Products from "../components/products/Products";
 import Footer from "../components/footer/Footer";
 import { mobile } from "../responsive";
+import { useLocation } from "react-router";
+import { useState } from "react";
 
 const Container = styled.div``;
 
 const Title = styled.h1`
   margin: 20px;
-  color:var(--color-primary)
+  color:var(--color-primary);
+  text-transform:uppercase;
 `;
 
 const FilterContainer = styled.div`
@@ -37,44 +40,24 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const ProductList = () => {
+  const location = useLocation();
+  const cat = location.pathname.split("/")[2];
+  const [sort, setSort] = useState("newest");
   return (
     <Container>
       <Navbar />
-      <Title>Stocks</Title>
+      <Title>{cat}</Title>
       <FilterContainer>
         <Filter>
-          <FilterText>Filtrar Productos:</FilterText>
-          <Select>
-            <Option disabled selected>
-              Precio
-            </Option>
-            <Option>White</Option>
-            <Option>Black</Option>
-            <Option>Red</Option>
-            <Option>Blue</Option>
-            <Option>Yellow</Option>
-            <Option>Green</Option>
-          </Select>
-          <Select>
-            <Option disabled selected>
-              Tamaño
-            </Option>
-            <Option>1/4 kg</Option>
-            <Option>1 kg</Option>
-            <Option>2 kg</Option>
-            
-          </Select>
-        </Filter>
-        <Filter>
-          <FilterText>Ordenar Productos</FilterText>
-          <Select>
-            <Option selected>Recientes</Option>
-            <Option>Precio (asc)</Option>
-            <Option>Precio (desc)</Option>
+          <FilterText>Sort Products</FilterText>
+          <Select onChange={(e) => setSort(e.target.value)}>
+            <Option value="newest">Newest</Option>
+            <Option value="asc">Price (asc)</Option>
+            <Option value="desc">Price (desc)</Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <Products />
+      <Products cat={cat} sort={sort}/>
       <Footer />
     </Container>
   );

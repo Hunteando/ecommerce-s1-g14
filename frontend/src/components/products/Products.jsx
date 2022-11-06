@@ -26,7 +26,7 @@ const Title = styled.h1`
     ${mobile({fontSize: "2.5rem", textAlign: "center"})}
 `;
 
-const Products = () => {
+const Products = ({cat,sort}) => {
   return (
     <Container>
     <ContainerTitle>

@@ -20,11 +20,13 @@ export const categories = [
       id: 1,
       img: box('./cpu.png'),
       title: "CPU",
+      cat:"cpu",
     },
     {
       id: 2,
       img:box('./monitorCategory.png'),
       title: "MONITOR",
+      cat: "monitor",
     },
   ];
 

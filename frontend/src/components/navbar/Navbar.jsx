@@ -1,4 +1,5 @@
 import React from 'react'
+import { Badge } from "@material-ui/core";
 import {BiSearchAlt2} from 'react-icons/bi'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import styled from 'styled-components'
@@ -55,11 +56,12 @@ const MenuItem = styled.div`
   margin-left: 25px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
-const Badge = styled.a`
-font-size: 1.5rem;
-margin-left: 20px;
-cursor: pointer;
-`
+const ItemBadge = styled.div`
+font-size: 20px;
+  cursor: pointer;
+  margin-left: 25px;
+  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+`;
 const Navbar = () => {
   return (
     <Container>
@@ -76,9 +78,11 @@ const Navbar = () => {
         <Right>
           <MenuItem>Registrate</MenuItem>
           <MenuItem>Ingresa</MenuItem>
-          <Badge>
-            <AiOutlineShoppingCart />
-          </Badge>
+          <ItemBadge>
+            <Badge badgeContent={4} color="primary" >
+              <AiOutlineShoppingCart />
+            </Badge>
+          </ItemBadge>
         </Right>
       </Wrapper>
     </Container>
