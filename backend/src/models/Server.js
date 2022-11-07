@@ -1,7 +1,10 @@
 import express from "express";
 import productos from "../routes/productos.js";
 import sequelize from "../config/mysql.js";
-import Productos from "./Productos.js";
+import cors from "cors";
+import Producto from "./Producto.js";
+import Categoria from "./Categoria.js";
+import Marca from "./Marca.js";
 
 class Server {
   constructor() {
@@ -11,6 +14,7 @@ class Server {
       productos: "/api/productos",
     };
 
+    this.middlewares();
     this.conectarDB();
     this.routes();
   }
@@ -19,10 +23,15 @@ class Server {
     try {
       await sequelize.authenticate();
       console.log("Database online");
-      await sequelize.sync({ force: true });
+      //await sequelize.sync({ force: true });
     } catch (error) {
       console.log(error + "Error al conectar con la base de datos");
     }
+  }
+
+  middlewares() {
+    this.app.use(express.json());
+    this.app.use(cors());
   }
 
   routes() {
