@@ -13,12 +13,12 @@ export const getProductos = async (req, res) => {
       }),
       Productos.count({ where: query }),
     ]);
-    const pagination = {
+    const paginacion = {
       skip,
       limite,
     };
 
-    res.json({ total, pagination, productos });
+    res.json({ total, paginacion, productos });
   } catch (error) {
     httpMessage(
       res,
