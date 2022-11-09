@@ -3,6 +3,7 @@ import { categories } from "../../data";
 import { mobile } from "../../responsive";
 import CategoryItem from "./CategoryItem";
 
+
 const ContainerCategory = styled.div`
 background-color: var(--color-white);
 display: flex;

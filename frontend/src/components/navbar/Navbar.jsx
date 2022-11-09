@@ -4,6 +4,7 @@ import {BiSearchAlt2} from 'react-icons/bi'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import styled from 'styled-components'
 import {mobile} from '../../responsive'
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 68px;
@@ -41,6 +42,7 @@ const Center = styled.div`
 `;
 const Logo = styled.h1`
   font-weight: bold;
+  color:var(--color-primary);
   ${mobile({ fontSize: "1rem" })}
 `;
 const Right = styled.div`
@@ -54,13 +56,15 @@ const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  color:var(--color-primary);
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 const ItemBadge = styled.div`
 font-size: 20px;
   cursor: pointer;
   margin-left: 25px;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  color:var(--color-primary);
+  ${mobile({ fontSize: "12px", marginLeft: "10px" })};
 `;
 const Navbar = () => {
   return (
@@ -72,17 +76,25 @@ const Navbar = () => {
             <BiSearchAlt2 />
           </SearchContainer>
         </Left>
+        <Link to="/">
         <Center>
           <Logo>BUSINESS TECH.</Logo>
         </Center>
+        </Link>
         <Right>
+        <Link to="/register">
           <MenuItem>Registrate</MenuItem>
+        </Link>
+        <Link to="/login">
           <MenuItem>Ingresa</MenuItem>
+        </Link>
+          <Link to="/cart">
           <ItemBadge>
             <Badge badgeContent={4} color="primary" >
               <AiOutlineShoppingCart />
             </Badge>
           </ItemBadge>
+          </Link>
         </Right>
       </Wrapper>
     </Container>
